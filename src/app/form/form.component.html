@@ -1,0 +1,28 @@
+<div class="ninja-form-container">
+ <div class="order-by-btns-container">
+  <button class="order-by-btn" (click)="updateSortOrder('asc')">Order by Name (ASC)</button>
+  <button class="order-by-btn" (click)="updateSortOrder('desc')">Order by Number (DESC)</button>
+  <button class="order-by-btn" (click)="updateSortOrderPrice('asc')">Order by Price (ASC)</button>
+  <button class="order-by-btn" (click)="updateSortOrderPrice('desc')">Order by Price (DESC)</button>
+ </div>
+ <input type="text" placeholder="Search" class="search-bar" [(ngModel)]="searchTerm" />
+ <h1>{{searchTerm}}</h1>
+ <div class="ninjas-list-container">
+  <ul class="ninjas-ul">
+   <li *ngFor="let item of ninjas | filter: searchTerm">
+    <div class="img-name-container">
+     <img [src]="item.img" alt="">
+     <h4>{{ item.name }}</h4>
+    </div>
+    <span [style.background]="item.color">{{ item.price | currency : '$' }}</span>
+    <button class="remove" (click)="removeNinja(ninja)"></button>
+   </li>
+  </ul>
+ </div>
+ <div class="add-new-ninja-container">
+  <input type="text" placeholder="name" class="search-bar" [(ngModel)]="newNinja.name">
+  <input type="text" placeholder="color" class="search-bar" [(ngModel)]="newNinja.color">
+  <input type="text" placeholder="price" class="search-bar" [(ngModel)]="newNinja.price">
+  <button class="order-by-btn" (click)="addNinja()">Submit</button>
+ </div>
+</div>
